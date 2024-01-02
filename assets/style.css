@@ -53,9 +53,9 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-body {
+/*body {
 
-}
+}*/
 section {
 	margin-block: 6em;
 }
@@ -112,6 +112,7 @@ header {
 	width: 100%;
 	min-height: 470px;
 	position: relative;
+	overflow: hidden;
 }
 .banner-img {
 	position: absolute;
@@ -125,12 +126,32 @@ header {
 /* Gestion des fleches du carrousel */
 #banner .arrow {
 	position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
 }
 #banner .arrow_left {
 	left: 10px;
+	opacity: 0.4;
+	margin-left: 20px;
+	transition:all 0.3s;
+}
+#banner .arrow_left:hover{
+	opacity: 1;
+	transition:all 0.3s;
+	transform: scale(1.1);
 }
 #banner .arrow_right {
 	right: 10px;
+	opacity: 0.4;
+	margin-right: 20px;
+	transition:all 0.3s;
+}
+#banner .arrow_right:hover{
+	opacity: 1;
+	transition:all 0.3s;
+	transform: scale(1.1);
 }
 /* Gestion des points du carrousel */
 .dots {

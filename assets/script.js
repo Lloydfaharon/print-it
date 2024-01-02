@@ -1,3 +1,11 @@
+let boutonGauche = document.getElementById("buttonL")
+buttonL.addEventListener("click",() =>{
+	let slide = document.querySelector("src")
+image.src = "./assets/images/slideshow/slide3.jpg"	
+	//console.log("j'ai cliqué sur le bouton gauche")
+});
+
+
 const slides = [
 	{
 		"image":"slide1.jpg",
@@ -16,3 +24,17 @@ const slides = [
 		"tagLine":"Autocollants <span>avec découpe laser sur mesure</span>"
 	}
 ]
+
+//function ChangeSlide(sens) {
+	document.getElementById("slide").src ="./assets/images/slideshow/" + slides[0][0];
+//}
+
+//for (const i = 0; i < slides.length; i++) {
+  //console.log(slides[i]);
+//}
+
+
+
+
+
+
