@@ -1,16 +1,4 @@
 
-let currentSlide = 0
-
-//DOM
-
-const boutonGauche = document.getElementById("buttonL");
-const boutonDroit = document.getElementById("buttonR");
-const pointCarou = document.querySelectorAll(".dot");
-const cSlide = document.getElementById("currentSlide").src;
-
-
-
-
 
 const slides = [
 	{
@@ -31,80 +19,81 @@ const slides = [
 	}
 ]
 
+
+
+//DOM
+
+let currentSlide = 0; 
+
+
+changeSlideTxt(currentSlide);
+createDots();
+majDot();
+
+
+const buttonLeft = document.querySelector('.arrow_left');
+const buttonRight = document.querySelector('.arrow_right');
+
+
+
+
+buttonLeft.addEventListener("click",  () => {
+    if (currentSlide == 0) {
+        currentSlide = slides.length - 1;
+    }
+    else {
+        currentSlide--;
+    }
+        changeSlideTxt(currentSlide);
+});
+
+buttonRight.addEventListener("click",  () => {
+    if (currentSlide == slides.length - 1) {
+        currentSlide = 0;
+    } else {
+            currentSlide++;
+    }
+    changeSlideTxt(currentSlide);
+
+});
+
+
+// function //
+
+function createDots(){
+	 const dots = document.querySelector(".dots");	
+	for (let index = 0; index < slides.length; index++) {
+		// Pour chaque element dans la boucle je vais créer un dot
+		const dot= document.createElement("div");
+		dot.setAttribute("class", "dot");
+		dots.appendChild(dot);
+	} 
+}
+
+function majDot() {
+  const allDot = document.querySelectorAll(".dot");	
+   for (let index = 0; index < allDot.length; index++) {
    
+    const dot = allDot[index];
+	if (index == currentSlide){
+		dot.classList.add('dot_selected');		
+  }
+  else{
+    dot.classList.remove('dot_selected');	 
+  }
+    
+	}  
+}
 
+function changeSlideTxt(currentSlide){
+	
+  	const element = slides[currentSlide];
+		//console.log(element);
+		const img = document.querySelector(".banner-img");
+		img.setAttribute("src" , "./assets/images/slideshow/"+ element.image);
 
-	buttonL.addEventListener("click",(buttonL) => {
-		const calcNextbot= buttonL.target.id === buttonL ? 1 : -1;
-		const dotSeclect = document.querySelector(".dot_selected");
-		const pixSelected = document.querySelector(".banner-img").src; 
-		//const pixSelect = cSlide + ("./assets/images/slideshow/");
-		//ne = calcNextbot + "./assets/images/slideshow/"+slides[0].image;	
+		const p = document.querySelector(".banner-txt");
+		p.innerHTML= element.tagLine;
 
-		nexIndex = calcNextbot + [...pointCarou] . indexOf(dotSeclect);
-		
-		if(nexIndex < 0) nexIndex = [...pointCarou] .length -1;
-
-		
-		pointCarou[nexIndex] .classList.add("dot_selected")
-		dotSeclect.classList.remove("dot_selected")
-
-		//nexIndexPix = calcNextbot +[ slides] . indexOf(pixSelected);
-
-		//if(nexIndexPix < 0) nexIndexPix = [slides] .length -1;
-
-
-
-		
-    });
-	buttonR.addEventListener("click",(buttonR) => {
-		const calcNextbot= buttonR.target.id === buttonR ? -1 : 1;
-		const dotSeclect = document.querySelector(".dot_selected");
-
-		nexIndex = calcNextbot + [...pointCarou] . indexOf(dotSeclect);
-
-		if(nexIndex >= [...pointCarou] .length) nexIndex = 0 ;
-
-		pointCarou[nexIndex] .classList.add("dot_selected")
-		dotSeclect.classList.remove("dot_selected")
-
-	});
-
-
-
-//let slide = document.querySelector("src");
-//image.src = "./assets/images/slideshow/"+slide[i].image;	
-	//console.log("j'ai cliqué sur le bouton gauche")
-//});
-//function remove()
-
-
-
-
-
-//function ChangeSlide(sens) {
-	//document.getElementById("slide").src ="./assets/images/slideshow/" + slides[0][0];
-//}
-
-//for (const i = 0; i < slides.length; i++) {
-  //console.log(slides[i]);
-//}
-
-//if ( currenslide)
-//document.querySelector('.banner-img').src = './assets/images/slideshow/' + slides[currentSlide].image;
-//document.getElementById('slide-text').innerHTML = slides[currentSlide].tagLine;
-
-
-
-
-//function changeSlide(direction) {
-    // Calcul de l'index du nouveau slide
-    //currentSlide += direction;
-
-    // Boucle infinie
-    //if (currentSlide < 0) {
-        //currentSlide = slides.length - 1;
-    //} else if (currentSlide >= slides.length) {
-        //currentSlide = 0;
-    //}
-//}
+    majDot();
+}
